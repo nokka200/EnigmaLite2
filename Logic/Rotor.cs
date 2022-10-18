@@ -46,7 +46,7 @@ namespace EnigmaLite2.Logic
         int rotorToUse;
 
         // properties
-        public bool Debug { private get; set; }
+        public bool Debug { get; set; } = false;
 
 
         // constructors
@@ -142,6 +142,7 @@ namespace EnigmaLite2.Logic
 
         void MoveRotor(List<int> rotorToMove, ref int rotorPos, int times = 1)
         {
+            // TODO: Refaktoroi pitäisi liikuttaa vain omaa rotoria joka luokassa on
             // moves items in list one step forward
             // this should be called before a letter is scrambled
             if (Debug)
