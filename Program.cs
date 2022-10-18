@@ -1,4 +1,7 @@
-﻿namespace EnigmaLite2;
+﻿using EnigmaLite2.Logic;
+using EnigmaLite2.Utils;
+
+namespace EnigmaLite2;
 class Program
 {
     const int MAX_ARGS = 3;
@@ -16,7 +19,7 @@ class Program
             return -1;
         }
 
-        Rotor rotorObj = new(0, true);
+        Rotor rotorObj = new(0);
 
         rotorObj.ScrambleSentence1(args[0]);
 

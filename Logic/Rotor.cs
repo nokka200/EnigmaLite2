@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnigmaLite2
+namespace EnigmaLite2.Logic
 {
     public class Rotor
     {
@@ -26,7 +26,7 @@ namespace EnigmaLite2
             {0, 9, 3, 10, 18, 8, 17, 20, 23, 1, 11, 7, 22, 19, 12, 2, 16, 6, 25,
                 13, 15, 14, 5, 21, 14, 4};
         static readonly List<int> Rotor3O = new()
-        // BDFHJLCPRTXVZNYEIWGAKMUSQO  
+            // BDFHJLCPRTXVZNYEIWGAKMUSQO  
             {1, 3, 5, 7, 9, 11, 2, 15, 17, 19, 23, 21, 25, 13, 24, 4, 8, 22, 6,
                 0, 10, 12, 20, 18, 16, 14};
 
@@ -37,7 +37,6 @@ namespace EnigmaLite2
             { 24, 17, 20, 7, 16, 18, 11, 3, 15, 23, 13, 6, 14, 10, 12, 8, 4, 1,
                 5, 25, 2, 22, 21, 9, 0, 19};
 
-
         // Constants
         const int MAX = 25;
 
@@ -45,16 +44,19 @@ namespace EnigmaLite2
         string? scrambledLetter;
         int rotor1Pos;
         int rotorToUse;
-        readonly bool debug;
 
-        // public methods
-        public Rotor(int rotorToUse, bool debug = false)
+        // properties
+        public bool Debug { private get; set; }
+
+
+        // constructors
+        public Rotor(int rotorToUse)
         {
             this.rotorToUse = rotorToUse;
-            this.debug = debug;
             this.rotor1Pos = 0;
         }
 
+        // public methods
         public void ScrambleSentence1(string sentenceToScramble)
         {
             // TODO:
@@ -68,7 +70,6 @@ namespace EnigmaLite2
                 ScrambleLetterIn1(letter.ToString());
             }
             PrintScambledLetter();
-
         }
 
         // private methods
@@ -143,7 +144,7 @@ namespace EnigmaLite2
         {
             // moves items in list one step forward
             // this should be called before a letter is scrambled
-            if (debug)
+            if (Debug)
             {
                 DebugPrintFunCall("MoveRotor");
             }

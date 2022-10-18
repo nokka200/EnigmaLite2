@@ -1,5 +1,5 @@
 ﻿using System;
-namespace EnigmaLite2
+namespace EnigmaLite2.Logic
 {
     public class EnigmaEngine
     {
