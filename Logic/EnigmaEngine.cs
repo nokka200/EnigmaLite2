@@ -3,24 +3,24 @@ namespace EnigmaLite2.Logic
 {
     public class EnigmaEngine
     {
-        Rotor firstRotor;
-        Rotor secondRotor;
-        Rotor thirdRotor;
+        // fields
+        Rotor2 firstRotor;
+        //Rotor2 secondRotor;
+        //Rotor2 thirdRotor;
         Reflector reflector;
 
         // constructor
-        public EnigmaEngine(int[] rotors, int reflectorToUse)
+        public EnigmaEngine()
         {
-            firstRotor = new(rotors[0]);
-            secondRotor = new(rotors[1]);
-            thirdRotor = new(rotors[2]);
-            reflector = new(reflectorToUse);
+            firstRotor = new(RotorNumbers.rotor1O);
+            reflector = new();
         }
 
-        public string? ScrambleSentence(string sentenceToScramble)
+        public string ScrambleLetter(string letterToScramble)
         {
-            // TODO: Rotor luokan samanniminen pitää refaktoroida tänne
-            return string.Empty;
+            string re;
+            re = firstRotor.MoveLetterForward(letterToScramble);
+            return re;
         }
     }
 }

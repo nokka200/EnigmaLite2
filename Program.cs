@@ -8,20 +8,9 @@ class Program
 
     static int Main(string[] args)
     {
-        bool re;
+        //TestClass.TestRotors(args);
 
-        // argument checker
-        ArgumentCheck argObj = new(args, MAX_ARGS, "<SCRAMBLE><ROTORS><REFLECTOR>");
-
-        re = argObj.CheckArgs();
-        if (!re)
-        {
-            return -1;
-        }
-
-        Rotor rotorObj = new(0);
-
-        rotorObj.ScrambleSentence1(args[0]);
+        TestClass.TestEnigmaEngine(args);
 
         return 0;
     }

@@ -2,6 +2,9 @@
 
 namespace EnigmaLite2.Logic
 {
+    /// <summary>
+    /// This class is the older version of the rotro
+    /// </summary>
     public class Rotor
     {
         // other stuff
@@ -37,9 +40,9 @@ namespace EnigmaLite2.Logic
 
         // properties
         public bool Debug { get; set; }
-        public string? ScrambledLetter { get; set; }
+        public string? ScrambledLetter { get; private set; }
         public int RotorPos { get; private set; }
-        public List<int> RotorToUse { get; set; }
+        public List<int> RotorToUse { get; private set; }
 
         // constructors
         public Rotor(int rotorToUse)
@@ -50,7 +53,7 @@ namespace EnigmaLite2.Logic
         }
 
         // public methods
-        public void ScrambleSentence1(string sentenceToScramble)
+        public void ScrambleSentence(string sentenceToScramble)
         {
             // TODO:
             // Tämä metodi tullaan korvaamaan kehittyneemmällä versiolla joka pystyt käyttämään useampaa rotoria
@@ -60,13 +63,13 @@ namespace EnigmaLite2.Logic
             foreach (var letter in sentenceToScramble)
             {
                 MoveRotor(Rotor1O);
-                ScrambleLetterIn1(letter.ToString());
+                ScrambleLetterIn(letter.ToString());
             }
             PrintScambledLetter();
         }
 
         // private methods
-        void ScrambleLetterIn1(string letterToScramble)
+        void ScrambleLetterIn(string letterToScramble)
         {
             // TODO:
             // Tämä metodi tullaan korvaamaan kehittyneemmällä versiolla joka pystyt käyttämään useampaa rotoria
@@ -81,7 +84,7 @@ namespace EnigmaLite2.Logic
             //letterPos = GetRotorPosition(letterPos, Rotor1O);
             // Hakee rotorX luvun avulla Standard aakkosista kirjaimen
             //letter = GetStdLetter(letterPos);
-            letter = MoveLetterForward(letterToScramble, Rotor1O);
+            letter = MoveLetterForward(letterToScramble, RotorToUse);
 
             // <-
             // Vertaa mikä on ensimmäisen rotor kirjaimen paikka Standard aakkosissa
@@ -99,7 +102,7 @@ namespace EnigmaLite2.Logic
             //letterPos = GetNumberPosInRotor(letterPos, Rotor1O);
             //// vertaa mikä kirjain on Standard aakkosissa paikassa letterPos
             //ScrambledLetter += GetStdLetter(letterPos);
-            ScrambledLetter += MoveLetterBackwards(letter, Rotor1O);
+            ScrambledLetter += MoveLetterBackwards(letter, RotorToUse);
         }
 
         static string MoveLetterForward(string letterToScramble, List<int> rotorOrReflector)
