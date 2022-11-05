@@ -28,7 +28,7 @@ namespace EnigmaLite2.Logic
         /// Salaa kirjaimen ja liikuttaa sitä eteenpäin
         /// </summary>
         /// <param name="letterToScramble">Kirjain joka salataan</param>
-        /// <returns>Salatin kirjaimen</returns>
+        /// <returns>Salattu kirjaimen</returns>
         public string MoveLetterForward(string letterToScramble)
         {
             int letterPos;
@@ -46,6 +46,28 @@ namespace EnigmaLite2.Logic
 
             return letter;
         }
+
+        /// <summary>
+        /// Salaa kirjaimen ja liikuttaa sitä taaksepäin
+        /// </summary>
+        /// <param name="letterToScramble">Kirjain joka salataan</param>
+        /// <returns>Salattu kirjaimen</returns>
+        public string MoveLetterBackwards(string scrambledLetter)
+        {
+            int letterPos;
+            string? letter;
+
+            // ->
+            // Hakee syötteen letter paikan Standard aakkosista
+            letterPos = GetStdPos(scrambledLetter);
+            // Katsoo mikä on syötteen letterPos paikka RotorX
+            letterPos = GetNumberPosInRotor(letterPos);
+            // vertaa mikä kirjain on Standard aakkosissa paikassa letterPos
+            letter = GetStdLetter(letterPos);
+
+            return letter;
+        }
+
         public void MoveRotor(int times = 1)
         {
             // moves to rotor forward
@@ -91,6 +113,15 @@ namespace EnigmaLite2.Logic
             string? letter;
             letter = Standard[pos];
             return letter;
-        }  
+        }
+
+        int GetNumberPosInRotor(int numToSearch)
+        {
+            // Hakee numeron paikan rotorX ja palauttaa sen
+            int pos;
+            pos = currentRotor.IndexOf(numToSearch);
+            return pos;
+        }
+
     }
 }

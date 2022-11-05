@@ -47,7 +47,7 @@ namespace EnigmaLite2.Utils
 
             EnigmaEngine enigmaObj = new();
 
-            temp = enigmaObj.ScrambleLetter("Niko");
+            temp = enigmaObj.ScrambleLetter(args[0]);
 
             Console.WriteLine("Tulos: " + temp);
 

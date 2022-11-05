@@ -8,12 +8,14 @@ namespace EnigmaLite2.Logic
         //Rotor2 secondRotor;
         //Rotor2 thirdRotor;
         Reflector reflector;
+        string scrambledLetter;
 
         // constructor
         public EnigmaEngine()
         {
             firstRotor = new(RotorNumbers.rotor1O);
             reflector = new(RotorNumbers.ReflectorB);
+            scrambledLetter = string.Empty;
         }
 
         //public methods
@@ -31,9 +33,11 @@ namespace EnigmaLite2.Logic
             foreach (var letter in letterToScramble)
             {
                 firstRotor.MoveRotor();
-                re += firstRotor.MoveLetterForward(letter.ToString());  
+                re = firstRotor.MoveLetterForward(letter.ToString());
+                re = reflector.MoveLetterForward(re);
+                scrambledLetter += firstRotor.MoveLetterBackwards(re);
             }
-            return re;
+            return scrambledLetter;
         }
     }
 }
