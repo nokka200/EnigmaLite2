@@ -1,4 +1,6 @@
-﻿namespace EnigmaLite2.Logic
+﻿using EnigmaLite2.Utils;
+
+namespace EnigmaLite2.Logic
 {
     public class Rotor2
     {
@@ -19,6 +21,8 @@
             this.currentRotor = currentRotor;
             this.currentRotorPos = currentRotorPos;
         }
+
+        // public methods
 
         /// <summary>
         /// Salaa kirjaimen ja liikuttaa sitä eteenpäin
@@ -42,7 +46,27 @@
 
             return letter;
         }
+        public void MoveRotor(int times = 1)
+        {
+            // moves to rotor forward
+            // TODO: Might encounter problem when reaching end of the list !
+            if (Debug)
+            {
+                DebugInfo.DebugPrintFunCall("MoveRotor");
+            }
 
+            for (int i = 0; i < times; i++)
+            {
+                currentRotor.Insert(0, currentRotor[currentRotor.Count - 1]);
+                currentRotor.RemoveAt(currentRotor.Count - 1);
+                currentRotorPos += 1;
+
+                if (Debug)
+                    DebugInfo.DebugPrintVari(currentRotorPos, "rotorPos");
+            }
+        }
+
+        // private methods
         static int GetStdPos(string letter)
         {
             // Katsoo mikä on syötteen paikka aakkosissa Standard
@@ -54,6 +78,7 @@
         int GetRotorPosition(int posToCheck)
         {
             // Vertaa mikä arvo on rotorX tai reflectorX paikassa postToCheck
+            // Compares what value the rotor has at posToCheck
             int valueAt;
             valueAt = currentRotor[posToCheck];
             return valueAt;
@@ -62,10 +87,10 @@
         static string GetStdLetter(int pos)
         {
             // Hakee kirjaimen Standard aakkosista
+            // Gets the letter from the Standard Library
             string? letter;
             letter = Standard[pos];
             return letter;
-        }
-
+        }  
     }
 }

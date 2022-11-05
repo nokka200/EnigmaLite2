@@ -26,6 +26,11 @@ namespace EnigmaLite2.Utils
             return 0;
         }
 
+        /// <summary>
+        /// Testataan EnigmaEngine yhden kirjaimen sekoittamista
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static int TestEnigmaEngine(string[] args)
         {
             bool re;
@@ -42,7 +47,7 @@ namespace EnigmaLite2.Utils
 
             EnigmaEngine enigmaObj = new();
 
-            temp = enigmaObj.ScrambleLetter("N");
+            temp = enigmaObj.ScrambleLetter("Niko");
 
             Console.WriteLine("Tulos: " + temp);
 
