@@ -1,5 +1,4 @@
-﻿using EnigmaLite2.Logic;
-using EnigmaLite2.Utils;
+﻿using EnigmaLite2.Utils;
 
 namespace EnigmaLite2;
 class Program
