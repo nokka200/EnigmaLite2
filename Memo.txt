@@ -46,21 +46,15 @@ luokkaann.
 
 Current BUGS
 
-rotor1Pos is not updating ! FIXED method uses reference now
 ----
 
 TO-DO
 
-lisää rakentaja joka määrittelee mitä rotoreita käytetään
-useampi kuin yhden rotorin käyttö
-Vaihda scrambledLetter string -> StringBuilder luokaksi
-Rotor luokan refraktorointi EnigmaEngine luokkaan
-ArgChecker omaan metodiin Main luokassa
+
 
 IN PROG.
 
-ScrambleLetterIn pitää pilkkoa pienemmiksi metodeiksi (MoveLetterForward ja MoveLetterBackwards)
-EnigmaEngine luokan toteutus
+
 
 DONE
 
@@ -73,5 +67,13 @@ DONE
     Reflectorin toiminnan lisääminen.
 
     Arg checker
+    lisää rakentaja joka määrittelee mitä rotoreita käytetään
+    useampi kuin yhden rotorin käyttö
+    Vaihda scrambledLetter string -> StringBuilder luokaksi
+    Rotor luokan refraktorointi EnigmaEngine luokkaan
+    ArgChecker omaan metodiin Main luokassa
+
+    ScrambleLetterIn pitää pilkkoa pienemmiksi metodeiksi (MoveLetterForward ja MoveLetterBackwards)
+EnigmaEngine luokan toteutus
 
 ----

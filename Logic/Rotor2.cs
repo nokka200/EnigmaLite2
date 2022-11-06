@@ -14,7 +14,7 @@ namespace EnigmaLite2.Logic
                 "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
         // properties
-        public bool Debug {private get; set;}
+        public bool Debug {get; set;}
 
         public Rotor2(List<int> currentRotor, int currentRotorPos = 0)
         {
@@ -31,9 +31,12 @@ namespace EnigmaLite2.Logic
         /// <returns>Salattu kirjaimen</returns>
         public string MoveLetterForward(string letterToScramble)
         {
+            if (Debug)
+                DebugInfo.DebugPrintFunCall("Rotor2.MoveLetterForward");
+
             int letterPos;
             string? letter;
-
+            
             // <-
             // Katso mikä on syötteen paikka Standard aakkosissa
             letterPos = GetStdPos(letterToScramble);
@@ -71,11 +74,8 @@ namespace EnigmaLite2.Logic
         public void MoveRotor(int times = 1)
         {
             // moves to rotor forward
-            // TODO: Might encounter problem when reaching end of the list !
             if (Debug)
-            {
-                DebugInfo.DebugPrintFunCall("MoveRotor");
-            }
+                DebugInfo.DebugPrintFunCall("Rotor2.MoveRotor");
 
             for (int i = 0; i < times; i++)
             {
@@ -84,14 +84,21 @@ namespace EnigmaLite2.Logic
                 currentRotorPos += 1;
 
                 if (Debug)
+                {
                     DebugInfo.DebugPrintVari(currentRotorPos, "rotorPos");
+                    DebugInfo.DebugPrintCollection(currentRotor, "currentRotor");
+                }
+                    
             }
         }
 
         // private methods
-        static int GetStdPos(string letter)
+        int GetStdPos(string letter)
         {
             // Katsoo mikä on syötteen paikka aakkosissa Standard
+            if (Debug)
+                DebugInfo.DebugPrintFunCall("Rotor2.GetStdPos");
+
             int pos;
             pos = Standard.IndexOf(letter);
             return pos;
@@ -101,15 +108,21 @@ namespace EnigmaLite2.Logic
         {
             // Vertaa mikä arvo on rotorX tai reflectorX paikassa postToCheck
             // Compares what value the rotor has at posToCheck
+            if (Debug)
+                DebugInfo.DebugPrintFunCall("Rotor2.GetRotorPosition");
+
             int valueAt;
             valueAt = currentRotor[posToCheck];
             return valueAt;
         }
 
-        static string GetStdLetter(int pos)
+        string GetStdLetter(int pos)
         {
             // Hakee kirjaimen Standard aakkosista
             // Gets the letter from the Standard Library
+            if (Debug)
+                DebugInfo.DebugPrintFunCall("Rotor2.GetStdLetter");
+
             string? letter;
             letter = Standard[pos];
             return letter;
@@ -118,6 +131,9 @@ namespace EnigmaLite2.Logic
         int GetNumberPosInRotor(int numToSearch)
         {
             // Hakee numeron paikan rotorX ja palauttaa sen
+            if (Debug)
+                DebugInfo.DebugPrintFunCall("Rotor2.GetNumberPosInRotor");
+
             int pos;
             pos = currentRotor.IndexOf(numToSearch);
             return pos;

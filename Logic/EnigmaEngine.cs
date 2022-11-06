@@ -1,19 +1,31 @@
-﻿using System;
+﻿using EnigmaLite2.Utils;
+
 namespace EnigmaLite2.Logic
 {
+    /// <summary>
+    /// Represents an Enigma Engine cipher device
+    /// </summary>
     public class EnigmaEngine
     {
         // fields
-        Rotor2 firstRotor;
-        //Rotor2 secondRotor;
-        //Rotor2 thirdRotor;
-        Reflector reflector;
+        readonly Rotor2 firstRotor;
+        readonly Rotor2 secondRotor;
+        readonly Rotor2 thirdRotor;
+        readonly Reflector reflector;
         string scrambledLetter;
+
+        // properties
+        /// <summary>
+        /// Enable console debug prints
+        /// </summary>
+        public bool Debug { get; set; }
 
         // constructor
         public EnigmaEngine()
         {
             firstRotor = new(RotorNumbers.rotor1O);
+            secondRotor = new(RotorNumbers.rotor2O);
+            thirdRotor = new(RotorNumbers.rotor3O);
             reflector = new(RotorNumbers.ReflectorB);
             scrambledLetter = string.Empty;
         }
@@ -27,7 +39,10 @@ namespace EnigmaLite2.Logic
         /// <returns>Scrambled sentence</returns>
         public string ScrambleLetter(string letterToScramble)
         {
-            string re = string.Empty;
+            if (Debug)
+                DebugInfo.DebugPrintFunCall("EnigmaEngine2.ScrambleLetter");
+
+            string re;
             letterToScramble = letterToScramble.ToUpper(); 
 
             foreach (var letter in letterToScramble)
@@ -38,6 +53,18 @@ namespace EnigmaLite2.Logic
                 scrambledLetter += firstRotor.MoveLetterBackwards(re);
             }
             return scrambledLetter;
+        }
+
+        /// <summary>
+        /// Change debug mode in rotor's and reflector.
+        /// </summary>
+        /// <param name="value">New check value</param>
+        public void SetRotorsDebug(bool value)
+        {
+            firstRotor.Debug = value;
+            //secondRotor.Debug = value;
+            //thirdRotor..Debug = value;
+            reflector.Debug = value;
         }
     }
 }

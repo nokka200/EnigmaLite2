@@ -46,6 +46,8 @@ namespace EnigmaLite2.Utils
             }
 
             EnigmaEngine enigmaObj = new();
+            enigmaObj.SetRotorsDebug(true);
+            enigmaObj.Debug = true;
 
             temp = enigmaObj.ScrambleLetter(args[0]);
 

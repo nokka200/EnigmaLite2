@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
-namespace EnigmaLite2.Logic
+﻿namespace EnigmaLite2.Logic
 {
     /// <summary>
     /// This class is the older version of the rotro

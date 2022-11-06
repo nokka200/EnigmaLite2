@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EnigmaLite2.Utils
+﻿namespace EnigmaLite2.Utils
 {
+    /// <summary>
+    /// Represents an argument checker for the engima machine class
+    /// </summary>
     public class ArgumentCheck
     {
         readonly string[] argsToCheck;
         readonly int argsLen;
         readonly string? correctFormat;
-        ConsoleColor currentBg = Console.BackgroundColor;
         ConsoleColor currentFg = Console.ForegroundColor;
 
         public ArgumentCheck(string[] argsToCheck, int argsLen, string? correctFormat)
