@@ -28,21 +28,22 @@ https://en.wikipedia.org/wiki/Enigma_rotor_details
 
 Program structure
 
-class EnigmaEngine
--Constructor will accpet the input and three Rotor classes that are different.
+class EnigmaEngine : 3x Rotor ja 1x Reflector
+Käyttä luo ilmentymän ja käyttää julkisia API käyttääkseen ohjelmaa.
 
-class Rotor
+class Rotor2
+Ohjaa kirjaimen liikkeitä Rotorin sisällä, EnigmaEngine kutsuu julkisia API.
 
 class Reflector
+Ohjaa kirjaimen liikkeitä Reflectorin sisällä, EnigmaEngine kutsuu julkisia API.
 
 class ArgumentChecker
+Tarkistaa käyttäjän args, kutstutaan ohjelman aluksi.
+
+class DebugInfo
+Tulostaa infoa ohjelman kulusta.
 
 ----
-
-Does it work
-
-Tällä hetkellä pystyy kääntämään sanoja ilman välilyöntiä, käyttää RotorI ja ReflectorB jotka on kovakoodattu
-luokkaann.
 
 Current BUGS
 
@@ -67,13 +68,19 @@ DONE
     Reflectorin toiminnan lisääminen.
 
     Arg checker
+
     lisää rakentaja joka määrittelee mitä rotoreita käytetään
+
     useampi kuin yhden rotorin käyttö
+
     Vaihda scrambledLetter string -> StringBuilder luokaksi
+
     Rotor luokan refraktorointi EnigmaEngine luokkaan
+
     ArgChecker omaan metodiin Main luokassa
 
     ScrambleLetterIn pitää pilkkoa pienemmiksi metodeiksi (MoveLetterForward ja MoveLetterBackwards)
-EnigmaEngine luokan toteutus
+
+    EnigmaEngine luokan toteutus
 
 ----

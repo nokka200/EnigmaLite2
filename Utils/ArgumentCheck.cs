@@ -8,13 +8,17 @@
         readonly string[] argsToCheck;
         readonly int argsLen;
         readonly string? correctFormat;
-        ConsoleColor currentFg = Console.ForegroundColor;
+        readonly ConsoleColor currentFg = Console.ForegroundColor;
+
+        // properties
+        public bool DebugFlag { get; private set; }
 
         public ArgumentCheck(string[] argsToCheck, int argsLen, string? correctFormat)
         {
             this.argsToCheck = argsToCheck;
             this.argsLen = argsLen;
             this.correctFormat = correctFormat;
+            DebugFlag = false;
         }
 
         public bool CheckArgs()
@@ -28,13 +32,19 @@
             {
                 return false;
             }
+            CheckFlag("-d");
 
             return true;
         }
 
+        void CheckFlag(string flag)
+        {
+            DebugFlag = argsToCheck.Contains<string>(flag);
+        }
+
         bool CheckLenght()
         {
-            if (argsToCheck.Length != argsLen)
+            if (argsToCheck.Length < argsLen)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid argument amount");

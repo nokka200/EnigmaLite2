@@ -4,14 +4,14 @@ namespace EnigmaLite2.Utils
 {
     static public class TestClass
     {
-        const int MAX_ARGS = 3;
+        const int MIN_ARGS = 3;
 
         public static int TestRotors(string[] args)
         {
             bool re;
 
             // argument checker
-            ArgumentCheck argObj = new(args, MAX_ARGS, "<SCRAMBLE><ROTORS><REFLECTOR>");
+            ArgumentCheck argObj = new(args, MIN_ARGS, "<SCRAMBLE><ROTORS><REFLECTOR>");
 
             re = argObj.CheckArgs();
             if (!re)
@@ -37,18 +37,22 @@ namespace EnigmaLite2.Utils
             string temp;
 
             // argument checker
-            ArgumentCheck argObj = new(args, MAX_ARGS, "<SCRAMBLE><ROTORS><REFLECTOR>");
+            ArgumentCheck argObj = new(args, MIN_ARGS, "<SCRAMBLE><ROTORS><REFLECTOR>");
 
             re = argObj.CheckArgs();
             if (!re)
             {
                 return -1;
             }
+            
+            EnigmaEngine enigmaObj = new(0,1,2);
 
-            EnigmaEngine enigmaObj = new();
-            enigmaObj.SetRotorsDebug(true);
-            enigmaObj.Debug = true;
-
+            if(argObj.DebugFlag)
+            {
+                enigmaObj.SetRotorsDebug(true);
+                enigmaObj.Debug = true;
+            }
+            
             temp = enigmaObj.ScrambleLetter(args[0]);
 
             Console.WriteLine("Tulos: " + temp);

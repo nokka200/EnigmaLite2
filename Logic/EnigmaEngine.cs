@@ -21,12 +21,12 @@ namespace EnigmaLite2.Logic
         public bool Debug { get; set; }
 
         // constructor
-        public EnigmaEngine()
+        public EnigmaEngine(int first, int second, int third)
         {
-            firstRotor = new(RotorNumbers.rotor1O);
-            secondRotor = new(RotorNumbers.rotor2O);
-            thirdRotor = new(RotorNumbers.rotor3O);
-            reflector = new(RotorNumbers.ReflectorB);
+            firstRotor = new(RotorNumbers.AllRotors[first]);
+            secondRotor = new(RotorNumbers.AllRotors[second]);
+            thirdRotor = new(RotorNumbers.AllRotors[third]);
+            reflector = new(RotorNumbers.AllReflectors[0]);
             scrambledLetter = string.Empty;
         }
 
@@ -62,8 +62,8 @@ namespace EnigmaLite2.Logic
         public void SetRotorsDebug(bool value)
         {
             firstRotor.Debug = value;
-            //secondRotor.Debug = value;
-            //thirdRotor..Debug = value;
+            secondRotor.Debug = value;
+            thirdRotor.Debug = value;
             reflector.Debug = value;
         }
     }

@@ -32,8 +32,11 @@ namespace EnigmaLite2.Logic
         public string MoveLetterForward(string letterToScramble)
         {
             if (Debug)
+            {
                 DebugInfo.DebugPrintFunCall("Rotor2.MoveLetterForward");
-
+                DebugInfo.DebugPrintVari(letterToScramble, "letterToScramble");
+            }
+                
             int letterPos;
             string? letter;
             
@@ -47,6 +50,11 @@ namespace EnigmaLite2.Logic
             // Hakee rotorX luvun avulla Standard aakkosista kirjaimen
             letter = GetStdLetter(letterPos);
 
+            if (Debug)
+            {
+                DebugInfo.DebugPrintVari(letter, "letter");
+                DebugInfo.DebugPrintVari(letterPos, "letterPos");
+            }
             return letter;
         }
 
@@ -59,6 +67,12 @@ namespace EnigmaLite2.Logic
         {
             int letterPos;
             string? letter;
+            if (Debug)
+            {
+                DebugInfo.DebugPrintFunCall("Rotor2.MoveLetterBackwards");
+                DebugInfo.DebugPrintVari(scrambledLetter, "scrambledLetter");
+            }
+                
 
             // ->
             // Hakee syötteen letter paikan Standard aakkosista
@@ -67,6 +81,12 @@ namespace EnigmaLite2.Logic
             letterPos = GetNumberPosInRotor(letterPos);
             // vertaa mikä kirjain on Standard aakkosissa paikassa letterPos
             letter = GetStdLetter(letterPos);
+
+            if (Debug)
+            {
+                DebugInfo.DebugPrintVari(letter, "letter");
+                DebugInfo.DebugPrintVari(letterPos, "letterPos");
+            }
 
             return letter;
         }
